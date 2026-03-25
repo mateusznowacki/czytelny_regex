@@ -1,0 +1,74 @@
+# ======================================================
+# Przykłady wyrażeń JasnyRegex
+# Linie zaczynające się od # są komentarzami
+# Puste linie są pomijane
+# ======================================================
+
+# --- Kotwice ---
+ZACZNIJ_OD; CYFRA JEDEN_LUB_WIĘCEJ; ZAKOŃCZ_NA;
+
+# --- Klasy znaków ---
+CYFRA DOKŁADNIE 3;
+LITERA JEDEN_LUB_WIĘCEJ;
+SŁOWO ZERO_LUB_WIĘCEJ;
+TEKST "hello world";
+
+# --- Kwantyfikatory ---
+CYFRA OPCJONALNIE;
+DOWOLNY_ZNAK JEDEN_LUB_WIĘCEJ LENIWIE;
+LITERA OD 2 DO 5;
+CYFRA MINIMUM 3;
+
+# --- Grupowanie ---
+GRUPA ( CYFRA DOKŁADNIE 3; TEKST "-"; ) DOKŁADNIE 2; CYFRA DOKŁADNIE 4;
+
+# --- Grupa nazwana ---
+GRUPA_NAZWANA "kod_kierunkowy" ( TEKST "+"; CYFRA OD 1 DO 3; );
+
+# --- LUB ---
+CYFRA LUB LITERA;
+
+# --- Lookahead (warunki) ---
+SŁOWO JEDEN_LUB_WIĘCEJ; JEŚLI_POTEM ( TEKST "@"; );
+
+# --- Negatywny Lookahead ---
+CYFRA JEDEN_LUB_WIĘCEJ; JEŚLI_NIE_POTEM ( TEKST "px"; );
+
+# --- Lookbehind ---
+JEŚLI_PRZED ( TEKST "$"; ); CYFRA JEDEN_LUB_WIĘCEJ;
+
+# --- Zbiory znaków ---
+DOWOLNY_Z ( "aeiou" ) JEDEN_LUB_WIĘCEJ;
+ŻADEN_Z ( ZAKRES "0" "9" ) JEDEN_LUB_WIĘCEJ;
+DOWOLNY_Z ( ZAKRES "a" "f" ZAKRES "0" "9" ) DOKŁADNIE 6;
+
+# --- Escaping w TEKST ---
+TEKST "Koszty to 5$.";
+
+# --- Predefiniowane wzorce ---
+EMAIL;
+TELEFON;
+KOD_POCZTOWY;
+ADRES_IP;
+URL;
+DATA;
+GODZINA;
+HEX;
+
+# --- Złożone wyrażenie: walidacja numeru telefonu ---
+ZACZNIJ_OD; GRUPA ( TEKST "+48"; ) OPCJONALNIE; ZNAK_BIAŁY OPCJONALNIE; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 3; ZAKOŃCZ_NA;
+
+# --- Złożone wyrażenie: prosty e-mail ---
+ZACZNIJ_OD; SŁOWO JEDEN_LUB_WIĘCEJ; TEKST "@"; SŁOWO JEDEN_LUB_WIĘCEJ; TEKST "."; LITERA OD 2 DO 4; ZAKOŃCZ_NA;
+
+# --- Negacje ---
+NIE_CYFRA JEDEN_LUB_WIĘCEJ;
+NIE_SŁOWO;
+NIE_ZNAK_BIAŁY DOKŁADNIE 5;
+
+# --- Znaki specjalne ---
+TAB;
+NOWA_LINIA;
+WIELKA_LITERA JEDEN_LUB_WIĘCEJ;
+MAŁA_LITERA OD 3 DO 10;
+GRANICA_SŁOWA; TEKST "java"; GRANICA_SŁOWA;

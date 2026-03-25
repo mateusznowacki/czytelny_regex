@@ -30,8 +30,6 @@
                 <artifactId>antlr4-maven-plugin</artifactId>
                 <version>${antlr4.version}</version>
                 <configuration>
-                    <sourceDirectory>${basedir}/src/main/java/org/example/grammar</sourceDirectory>
-                    <outputDirectory>${project.build.directory}/generated-sources/antlr4/org/example/grammar</outputDirectory>
                     <visitor>true</visitor>
                     <listener>false</listener>
                 </configuration>
