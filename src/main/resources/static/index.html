@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JasnyRegex - Przetłumacz na Regex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <header class="glass-header">
+        <div class="logo">JasnyRegex <span>Translator</span></div>
+    </header>
+
+    <main class="main-layout">
+        <aside class="sidebar glass-panel">
+            <h2>Składnia JasnyRegex</h2>
+            <div class="help-scroll-area">
+                <div class="help-section">
+                    <h3>Kotwice</h3>
+                    <div class="rules-container">
+                        <span class="rule-chip"><code>ZACZNIJ_OD</code> &rarr; <code>^</code></span>
+                        <span class="rule-chip"><code>ZAKOŃCZ_NA</code> &rarr; <code>$</code></span>
+                        <span class="rule-chip"><code>GRANICA_SŁOWA</code> &rarr; <code>\b</code></span>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h3>Klasy Znaków</h3>
+                    <div class="rules-container">
+                        <span class="rule-chip"><code>CYFRA</code> &rarr; <code>\d</code></span>
+                        <span class="rule-chip"><code>NIE_CYFRA</code> &rarr; <code>\D</code></span>
+                        <span class="rule-chip"><code>LITERA</code> &rarr; <code>[a-zA-Z]</code></span>
+                        <span class="rule-chip"><code>WIELKA_LITERA</code> &rarr; <code>[A-Z]</code></span>
+                        <span class="rule-chip"><code>MAŁA_LITERA</code> &rarr; <code>[a-z]</code></span>
+                        <span class="rule-chip"><code>SŁOWO</code> &rarr; <code>\w</code></span>
+                        <span class="rule-chip"><code>NIE_SŁOWO</code> &rarr; <code>\W</code></span>
+                        <span class="rule-chip"><code>ZNAK_BIAŁY</code> &rarr; <code>\s</code></span>
+                        <span class="rule-chip"><code>NIE_ZNAK_BIAŁY</code> &rarr; <code>\S</code></span>
+                        <span class="rule-chip"><code>DOWOLNY_ZNAK</code> &rarr; <code>.</code></span>
+                        <span class="rule-chip"><code>TAB</code> &rarr; <code>\t</code></span>
+                        <span class="rule-chip"><code>NOWA_LINIA</code> &rarr; <code>\n</code></span>
+                        <span class="rule-chip"><code>TEKST "..."</code> &rarr; <code>...</code></span>
+                        <span class="rule-chip"><code>ZNAK "x"</code> &rarr; <code>x</code></span>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h3>Kwantyfikatory</h3>
+                    <div class="rules-container">
+                        <span class="rule-chip"><code>OPCJONALNIE</code> &rarr; <code>?</code></span>
+                        <span class="rule-chip"><code>JEDEN_LUB_WIĘCEJ</code> &rarr; <code>+</code></span>
+                        <span class="rule-chip"><code>ZERO_LUB_WIĘCEJ</code> &rarr; <code>*</code></span>
+                        <span class="rule-chip"><code>DOKŁADNIE n</code> &rarr; <code>{n}</code></span>
+                        <span class="rule-chip"><code>OD n DO m</code> &rarr; <code>{n,m}</code></span>
+                        <span class="rule-chip"><code>MINIMUM n</code> &rarr; <code>{n,}</code></span>
+                        <span class="rule-chip"><code>LENIWIE</code> &rarr; <code>?</code></span>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h3>Grupowanie i Warunki</h3>
+                    <div class="rules-container">
+                        <span class="rule-chip"><code>GRUPA ( ... )</code> &rarr; <code>(...)</code></span>
+                        <span class="rule-chip"><code>GRUPA_NAZWANA "nazwa" (...)</code> &rarr; <code>(?&lt;nazwa&gt;...)</code></span>
+                        <span class="rule-chip"><code>LUB</code> &rarr; <code>|</code></span>
+                        <span class="rule-chip"><code>JEŚLI_POTEM ( ... )</code> &rarr; <code>(?=...)</code></span>
+                        <span class="rule-chip"><code>JEŚLI_NIE_POTEM ( ... )</code> &rarr; <code>(?!...)</code></span>
+                        <span class="rule-chip"><code>JEŚLI_PRZED ( ... )</code> &rarr; <code>(?&lt;=...)</code></span>
+                        <span class="rule-chip"><code>JEŚLI_NIE_PRZED ( ... )</code> &rarr; <code>(?&lt;!...)</code></span>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h3>Zbiory Znaków</h3>
+                    <div class="rules-container">
+                        <span class="rule-chip"><code>DOWOLNY_Z (...)</code> &rarr; <code>[...]</code></span>
+                        <span class="rule-chip"><code>ŻADEN_Z (...)</code> &rarr; <code>[^...]</code></span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="content-area">
+            <section class="translator-panel glass-panel">
+                <h2>Wpisz wyrażenie</h2>
+                <textarea id="jasny-input"
+                    placeholder="Wpisz komendy, np. ZACZNIJ_OD EMAIL ZAKOŃCZ_NA... Spróbuj pisać, a wynik pojawi się automatycznie."></textarea>
+
+                <div class="quick-inserts">
+                    <span>Szybko wstaw:</span>
+                    <div class="chips">
+                        <button class="chip" data-insert="EMAIL">EMAIL</button>
+                        <button class="chip" data-insert="URL">URL</button>
+                        <button class="chip" data-insert="ADRES_IP">ADRES_IP</button>
+                        <button class="chip" data-insert="DATA">DATA</button>
+                        <button class="chip" data-insert="GODZINA">GODZINA</button>
+                        <button class="chip" data-insert="TELEFON">TELEFON</button>
+                        <button class="chip" data-insert="KOD_POCZTOWY">KOD_POCZTOWY</button>
+                        <button class="chip" data-insert="HEX">HEX</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="result-panel glass-panel">
+                <h2>Gotowy Regex</h2>
+                <div class="result-box" id="result-box">
+                    <span class="placeholder">Tutaj pojawi się wynik...</span>
+                </div>
+                <div class="error-box" id="error-box" style="display: none;"></div>
+                <button id="copy-btn" class="btn-primary" disabled>Skopiuj do schowka</button>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js?v=3"></script>
+</body>
+
+</html>

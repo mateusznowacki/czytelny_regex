@@ -17,10 +17,6 @@ public class JasnyRegexTranslator extends JasnyRegexParserBaseVisitor<String> {
             '\\', '^', '$', '|'
     );
 
-    // ═══════════════════════════════════════════════════════════════════
-    // PROGRAM
-    // ═══════════════════════════════════════════════════════════════════
-
     @Override
     public String visitProgram(JasnyRegexParser.ProgramContext ctx) {
         StringBuilder sb = new StringBuilder();
@@ -29,10 +25,6 @@ public class JasnyRegexTranslator extends JasnyRegexParserBaseVisitor<String> {
         }
         return sb.toString();
     }
-
-    // ═══════════════════════════════════════════════════════════════════
-    // WYRAŻENIA
-    // ═══════════════════════════════════════════════════════════════════
 
     @Override
     public String visitAtomExpr(JasnyRegexParser.AtomExprContext ctx) {
@@ -72,10 +64,15 @@ public class JasnyRegexTranslator extends JasnyRegexParserBaseVisitor<String> {
 
     @Override
     public String visitOrExpr(JasnyRegexParser.OrExprContext ctx) {
-        return visit(ctx.atom(0)) + "|" + visit(ctx.atom(1));
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < ctx.atom().size(); i++) {
+            if (i > 0) {
+                sb.append("|");
+            }
+            sb.append(visit(ctx.atom(i)));
+        }
+        return sb.toString();
     }
-
-    // ─── Lookahead / Lookbehind ─────────────────────────────────────────
 
     @Override
     public String visitLookaheadExpr(JasnyRegexParser.LookaheadExprContext ctx) {
@@ -117,8 +114,6 @@ public class JasnyRegexTranslator extends JasnyRegexParserBaseVisitor<String> {
         return sb.toString();
     }
 
-    // ─── Zbiory znaków (DOWOLNY_Z / ŻADEN_Z) ───────────────────────────
-
     @Override
     public String visitCharSetExpr(JasnyRegexParser.CharSetExprContext ctx) {
         StringBuilder sb = new StringBuilder("[");
@@ -157,10 +152,6 @@ public class JasnyRegexTranslator extends JasnyRegexParserBaseVisitor<String> {
         return from + "-" + to;
     }
 
-    // ═══════════════════════════════════════════════════════════════════
-    // ATOMY – kotwice i granice
-    // ═══════════════════════════════════════════════════════════════════
-
     @Override
     public String visitAnchorStart(JasnyRegexParser.AnchorStartContext ctx) {
         return "^";
@@ -175,10 +166,6 @@ public class JasnyRegexTranslator extends JasnyRegexParserBaseVisitor<String> {
     public String visitWordBoundary(JasnyRegexParser.WordBoundaryContext ctx) {
         return "\\b";
     }
-
-    // ═══════════════════════════════════════════════════════════════════
-    // ATOMY – klasy znaków
-    // ═══════════════════════════════════════════════════════════════════
 
     @Override
     public String visitDigit(JasnyRegexParser.DigitContext ctx) {
@@ -252,10 +239,6 @@ public class JasnyRegexTranslator extends JasnyRegexParserBaseVisitor<String> {
         return escapeRegex(content);
     }
 
-    // ═══════════════════════════════════════════════════════════════════
-    // ATOMY – predefiniowane wzorce
-    // ═══════════════════════════════════════════════════════════════════
-
     @Override
     public String visitEmail(JasnyRegexParser.EmailContext ctx) {
         return "[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}";
@@ -301,10 +284,6 @@ public class JasnyRegexTranslator extends JasnyRegexParserBaseVisitor<String> {
         return "#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})";
     }
 
-    // ═══════════════════════════════════════════════════════════════════
-    // KWANTYFIKATORY
-    // ═══════════════════════════════════════════════════════════════════
-
     @Override
     public String visitOptional(JasnyRegexParser.OptionalContext ctx) {
         return ctx.LENIWIE() != null ? "??" : "?";
@@ -336,10 +315,6 @@ public class JasnyRegexTranslator extends JasnyRegexParserBaseVisitor<String> {
         String result = "{" + ctx.NUMBER().getText() + ",}";
         return ctx.LENIWIE() != null ? result + "?" : result;
     }
-
-    // ═══════════════════════════════════════════════════════════════════
-    // POMOCNICZE
-    // ═══════════════════════════════════════════════════════════════════
 
     private String escapeRegex(String text) {
         StringBuilder sb = new StringBuilder();

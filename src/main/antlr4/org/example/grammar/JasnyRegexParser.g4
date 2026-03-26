@@ -12,7 +12,7 @@ expression
     : atom quantifier? SEMICOLON                                              # atomExpr
     | GRUPA LPAREN expression+ RPAREN quantifier? SEMICOLON                   # groupExpr
     | GRUPA_NAZWANA STRING LPAREN expression+ RPAREN quantifier? SEMICOLON    # namedGroupExpr
-    | atom LUB atom SEMICOLON                                                 # orExpr
+    | atom (LUB atom)+ SEMICOLON                                              # orExpr
     | JESLI_POTEM LPAREN expression+ RPAREN SEMICOLON                         # lookaheadExpr
     | JESLI_NIE_POTEM LPAREN expression+ RPAREN SEMICOLON                     # negLookaheadExpr
     | JESLI_PRZED LPAREN expression+ RPAREN SEMICOLON                         # lookbehindExpr
