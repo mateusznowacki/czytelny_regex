@@ -1,7 +1,7 @@
 # JasnyRegex – Czytelny Regex
 
 Translator czytelnych wyrażeń regularnych napisanych w języku **JasnyRegex** na standardowy format **Regex**.  
-Zbudowany z użyciem **ANTLR 4** i **Java 21**.
+Zbudowany z użyciem **ANTLR 4**, **Java 21**, **Spring Boot** oraz **HTML/JS/CSS**.
 
 ---
 
@@ -71,14 +71,16 @@ mvn clean compile
 mvn exec:java -Dexec.mainClass="org.example.Main"
 ```
 
+Aplikacja uruchomi się jako serwer webowy. Aby z niej skorzystać, otwórz w przeglądarce adres `http://localhost:8080`.
+
 ## Struktura projektu
 
 ```
-src/main/java/org/example/
-├── Main.java                           – punkt wejścia (REPL)
-├── grammar/
-│   ├── JasnyRegexLexer.g4              – gramatyka leksera
-│   └── JasnyRegexParser.g4            – gramatyka parsera
-└── translator/
-    └── JasnyRegexTranslator.java       – Visitor tłumaczący AST na regex
+src/main/
+├── antlr4/org/example/grammar/         – gramatyka ANTLR (Lexer i Parser)
+├── java/org/example/
+│   ├── Main.java                       – główna klasa aplikacji (Spring Boot)
+│   ├── controller/                     – endpointy REST API
+│   └── translator/                     – Visitor tłumaczący AST na regex
+└── resources/static/                   – pliki frontendowe (HTML, CSS, JS)
 ```
