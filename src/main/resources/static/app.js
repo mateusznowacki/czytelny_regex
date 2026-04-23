@@ -1,3 +1,6 @@
+/**
+ * JasnyRegex Translator – logika frontendowa.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const inputArea = document.getElementById('jasny-input');
     const resultBox = document.getElementById('result-box');
@@ -7,7 +10,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let debounceTimer;
 
-    // Translation logic
+    // ─── Mapa słów kluczowych ASCII → polskie znaki ─────────────────
+
+    /** Słowa kluczowe ASCII do zamiany na polskie (dla wygody i czytelności) */
+    const ASCII_MAP = {
+        'ZAKONCZ_NA':       'ZAKOŃCZ_NA',
+        'GRANICA_SLOWA':    'GRANICA_SŁOWA',
+        'MALA_LITERA':      'MAŁA_LITERA',
+        'ZNAK_BIALY':       'ZNAK_BIAŁY',
+        'NIE_ZNAK_BIALY':   'NIE_ZNAK_BIAŁY',
+        'SLOWO':            'SŁOWO',
+        'NIE_SLOWO':        'NIE_SŁOWO',
+        'JEDEN_LUB_WIECEJ': 'JEDEN_LUB_WIĘCEJ',
+        'ZERO_LUB_WIECEJ':  'ZERO_LUB_WIĘCEJ',
+        'DOKLADNIE':        'DOKŁADNIE',
+        'JESLI_POTEM':      'JEŚLI_POTEM',
+        'JESLI_NIE_POTEM':  'JEŚLI_NIE_POTEM',
+        'JESLI_PRZED':      'JEŚLI_PRZED',
+        'JESLI_NIE_PRZED':  'JEŚLI_NIE_PRZED',
+        'ZADEN_Z':          'ŻADEN_Z'
+    };
+
+    /**
+     * Zamienia słowa kluczowe ASCII na wersje z polskimi znakami.
+     * @param {string} text - tekst wejściowy
+     * @returns {string} przetworzony tekst
+     */
+    function normalizeKeywords(text) {
+        if (!text) return '';
+        const parts = text.split(/("(?:[^"\\]|\\.)*")/g);
+
+        for (let i = 0; i < parts.length; i++) {
+            if (i % 2 === 1) continue;
+
+            let segment = parts[i];
+            const words = segment.split(/(\b\w+\b)/g);
+            for (let j = 0; j < words.length; j++) {
+                const upperWord = words[j].toUpperCase();
+                if (ASCII_MAP[upperWord]) {
+                    words[j] = ASCII_MAP[upperWord];
+                }
+            }
+            parts[i] = words.join('');
+        }
+        return parts.join('');
+    }
+
+    // ─── Tłumaczenie ─────────────────────────────────────────────────
+
     const translateRegex = async (expression) => {
         if (!expression.trim()) {
             resultBox.innerHTML = '<span class="placeholder">Tutaj pojawi się wynik...</span>';
@@ -20,12 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('/api/translate', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ expression: expression })
             });
-
             const data = await response.json();
 
             if (response.ok) {
@@ -34,76 +81,58 @@ document.addEventListener('DOMContentLoaded', () => {
                 errorBox.style.display = 'none';
                 copyBtn.disabled = false;
             } else {
-                errorBox.textContent = data.error || 'Wystąpił nieznany błąd.';
+                errorBox.textContent = data.error || 'Wystąpił błąd.';
                 errorBox.style.display = 'flex';
                 resultBox.style.display = 'none';
                 copyBtn.disabled = true;
             }
         } catch (error) {
-            errorBox.textContent = 'Błąd połączenia z serwerem.';
+            errorBox.textContent = 'Błąd połączenia.';
             errorBox.style.display = 'flex';
             resultBox.style.display = 'none';
             copyBtn.disabled = true;
         }
     };
 
-    inputArea.addEventListener('input', (e) => {
+    // ─── Eventy ─────────────────────────────────────────────────────
+
+    inputArea.addEventListener('input', () => {
         clearTimeout(debounceTimer);
-        
-        // Ukrywamy błędy podczas pisania, żeby nie straszyły
         errorBox.style.display = 'none';
 
-        if (e.target.value.trim() !== '') {
-            resultBox.innerHTML = '<span class="placeholder">Oczekiwanie na dokończenie pisania...</span>';
-            resultBox.style.display = 'flex';
-            copyBtn.disabled = true;
-        }
-
         debounceTimer = setTimeout(() => {
-            translateRegex(e.target.value);
-        }, 1200); // 1.2s opóźnienia, czekamy na "koniec" inputu
+            const val = inputArea.value;
+            const fixed = normalizeKeywords(val);
+            if (val !== fixed) {
+                const start = inputArea.selectionStart;
+                inputArea.value = fixed;
+                inputArea.setSelectionRange(start, start);
+            }
+            translateRegex(inputArea.value);
+        }, 1000);
     });
 
-    // Copy to clipboard
+    // Kopiowanie
     copyBtn.addEventListener('click', async () => {
-        const regexText = resultBox.textContent;
-        if (regexText && !copyBtn.disabled) {
-            try {
-                await navigator.clipboard.writeText(regexText);
-                const originalText = copyBtn.textContent;
-                copyBtn.textContent = 'Skopiowano!';
-                setTimeout(() => {
-                    copyBtn.textContent = originalText;
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy text: ', err);
-            }
+        const text = resultBox.textContent;
+        if (text && !copyBtn.disabled) {
+            await navigator.clipboard.writeText(text);
+            const original = copyBtn.textContent;
+            copyBtn.textContent = 'Skopiowano!';
+            setTimeout(() => copyBtn.textContent = original, 2000);
         }
     });
 
-
-
-    // Quick Insert Chips Logic
+    // Chipy
     chips.forEach(chip => {
         chip.addEventListener('click', () => {
-            const textToInsert = chip.getAttribute('data-insert') + ';';
-            const cursorPos = inputArea.selectionStart;
-            const textBefore = inputArea.value.substring(0, cursorPos);
-            const textAfter = inputArea.value.substring(inputArea.selectionEnd, inputArea.value.length);
-            
-            // Add spaces if necessary around the inserted text for clean syntax
-            const spaceBefore = textBefore.length > 0 && !textBefore.endsWith(' ') ? ' ' : '';
-            const spaceAfter = textAfter.length > 0 && !textAfter.startsWith(' ') ? ' ' : '';
-            
-            inputArea.value = textBefore + spaceBefore + textToInsert + spaceAfter + textAfter;
-            
-            // Re-focus and update cursor position
-            const newCursorPos = cursorPos + spaceBefore.length + textToInsert.length + spaceAfter.length;
+            const insert = chip.getAttribute('data-insert') + ';';
+            const pos = inputArea.selectionStart;
+            const val = inputArea.value;
+            inputArea.value = val.substring(0, pos) + insert + val.substring(inputArea.selectionEnd);
             inputArea.focus();
-            inputArea.setSelectionRange(newCursorPos, newCursorPos);
-
-            // Trigger translation
-            clearTimeout(debounceTimer);
+            const newPos = pos + insert.length;
+            inputArea.setSelectionRange(newPos, newPos);
             translateRegex(inputArea.value);
         });
     });

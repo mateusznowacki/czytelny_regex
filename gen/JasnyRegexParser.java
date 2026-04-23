@@ -128,14 +128,6 @@ public class JasnyRegexParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterProgram(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitProgram(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitProgram(this);
 			else return visitor.visitChildren(this);
@@ -207,14 +199,6 @@ public class JasnyRegexParser extends Parser {
 		}
 		public GroupExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterGroupExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitGroupExpr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitGroupExpr(this);
 			else return visitor.visitChildren(this);
@@ -233,14 +217,6 @@ public class JasnyRegexParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public LookbehindExprContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterLookbehindExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitLookbehindExpr(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitLookbehindExpr(this);
@@ -261,14 +237,6 @@ public class JasnyRegexParser extends Parser {
 		}
 		public LookaheadExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterLookaheadExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitLookaheadExpr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitLookaheadExpr(this);
 			else return visitor.visitChildren(this);
@@ -285,14 +253,6 @@ public class JasnyRegexParser extends Parser {
 		}
 		public AtomExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterAtomExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitAtomExpr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitAtomExpr(this);
 			else return visitor.visitChildren(this);
@@ -306,17 +266,12 @@ public class JasnyRegexParser extends Parser {
 		public AtomContext atom(int i) {
 			return getRuleContext(AtomContext.class,i);
 		}
-		public TerminalNode LUB() { return getToken(JasnyRegexParser.LUB, 0); }
 		public TerminalNode SEMICOLON() { return getToken(JasnyRegexParser.SEMICOLON, 0); }
+		public List<TerminalNode> LUB() { return getTokens(JasnyRegexParser.LUB); }
+		public TerminalNode LUB(int i) {
+			return getToken(JasnyRegexParser.LUB, i);
+		}
 		public OrExprContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterOrExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitOrExpr(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitOrExpr(this);
@@ -341,14 +296,6 @@ public class JasnyRegexParser extends Parser {
 		}
 		public NamedGroupExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterNamedGroupExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitNamedGroupExpr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitNamedGroupExpr(this);
 			else return visitor.visitChildren(this);
@@ -371,14 +318,6 @@ public class JasnyRegexParser extends Parser {
 		}
 		public CharSetExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterCharSetExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitCharSetExpr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitCharSetExpr(this);
 			else return visitor.visitChildren(this);
@@ -397,14 +336,6 @@ public class JasnyRegexParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public NegLookbehindExprContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterNegLookbehindExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitNegLookbehindExpr(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitNegLookbehindExpr(this);
@@ -428,14 +359,6 @@ public class JasnyRegexParser extends Parser {
 		}
 		public NegCharSetExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterNegCharSetExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitNegCharSetExpr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitNegCharSetExpr(this);
 			else return visitor.visitChildren(this);
@@ -455,14 +378,6 @@ public class JasnyRegexParser extends Parser {
 		}
 		public NegLookaheadExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterNegLookaheadExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitNegLookaheadExpr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitNegLookaheadExpr(this);
 			else return visitor.visitChildren(this);
@@ -474,9 +389,9 @@ public class JasnyRegexParser extends Parser {
 		enterRule(_localctx, 2, RULE_expression);
 		int _la;
 		try {
-			setState(121);
+			setState(125);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
 			case 1:
 				_localctx = new AtomExprContext(_localctx);
 				enterOuterAlt(_localctx, 1);
@@ -581,11 +496,23 @@ public class JasnyRegexParser extends Parser {
 				{
 				setState(50);
 				atom();
-				setState(51);
-				match(LUB);
-				setState(52);
-				atom();
-				setState(53);
+				setState(53); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(51);
+					match(LUB);
+					setState(52);
+					atom();
+					}
+					}
+					setState(55); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==LUB );
+				setState(57);
 				match(SEMICOLON);
 				}
 				break;
@@ -593,27 +520,27 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new LookaheadExprContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(55);
+				setState(59);
 				match(JESLI_POTEM);
-				setState(56);
+				setState(60);
 				match(LPAREN);
-				setState(58); 
+				setState(62); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(57);
+					setState(61);
 					expression();
 					}
 					}
-					setState(60); 
+					setState(64); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 17420521439230L) != 0) );
-				setState(62);
+				setState(66);
 				match(RPAREN);
-				setState(63);
+				setState(67);
 				match(SEMICOLON);
 				}
 				break;
@@ -621,27 +548,27 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new NegLookaheadExprContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(65);
+				setState(69);
 				match(JESLI_NIE_POTEM);
-				setState(66);
+				setState(70);
 				match(LPAREN);
-				setState(68); 
+				setState(72); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(67);
+					setState(71);
 					expression();
 					}
 					}
-					setState(70); 
+					setState(74); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 17420521439230L) != 0) );
-				setState(72);
+				setState(76);
 				match(RPAREN);
-				setState(73);
+				setState(77);
 				match(SEMICOLON);
 				}
 				break;
@@ -649,27 +576,27 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new LookbehindExprContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(75);
+				setState(79);
 				match(JESLI_PRZED);
-				setState(76);
+				setState(80);
 				match(LPAREN);
-				setState(78); 
+				setState(82); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(77);
+					setState(81);
 					expression();
 					}
 					}
-					setState(80); 
+					setState(84); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 17420521439230L) != 0) );
-				setState(82);
+				setState(86);
 				match(RPAREN);
-				setState(83);
+				setState(87);
 				match(SEMICOLON);
 				}
 				break;
@@ -677,27 +604,27 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new NegLookbehindExprContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(85);
+				setState(89);
 				match(JESLI_NIE_PRZED);
-				setState(86);
+				setState(90);
 				match(LPAREN);
-				setState(88); 
+				setState(92); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(87);
+					setState(91);
 					expression();
 					}
 					}
-					setState(90); 
+					setState(94); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 17420521439230L) != 0) );
-				setState(92);
+				setState(96);
 				match(RPAREN);
-				setState(93);
+				setState(97);
 				match(SEMICOLON);
 				}
 				break;
@@ -705,37 +632,37 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new CharSetExprContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(95);
+				setState(99);
 				match(DOWOLNY_Z);
-				setState(96);
+				setState(100);
 				match(LPAREN);
-				setState(98); 
+				setState(102); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(97);
+					setState(101);
 					charSetItem();
 					}
 					}
-					setState(100); 
+					setState(104); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( _la==ZAKRES || _la==STRING );
-				setState(102);
+				setState(106);
 				match(RPAREN);
-				setState(104);
+				setState(108);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 12750684160L) != 0)) {
 					{
-					setState(103);
+					setState(107);
 					quantifier();
 					}
 				}
 
-				setState(106);
+				setState(110);
 				match(SEMICOLON);
 				}
 				break;
@@ -743,37 +670,37 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new NegCharSetExprContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(108);
+				setState(112);
 				match(ZADEN_Z);
-				setState(109);
+				setState(113);
 				match(LPAREN);
-				setState(111); 
+				setState(115); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(110);
+					setState(114);
 					charSetItem();
 					}
 					}
-					setState(113); 
+					setState(117); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( _la==ZAKRES || _la==STRING );
-				setState(115);
+				setState(119);
 				match(RPAREN);
-				setState(117);
+				setState(121);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 12750684160L) != 0)) {
 					{
-					setState(116);
+					setState(120);
 					quantifier();
 					}
 				}
 
-				setState(119);
+				setState(123);
 				match(SEMICOLON);
 				}
 				break;
@@ -811,14 +738,6 @@ public class JasnyRegexParser extends Parser {
 		}
 		public CharSetRangeContext(CharSetItemContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterCharSetRange(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitCharSetRange(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitCharSetRange(this);
 			else return visitor.visitChildren(this);
@@ -828,14 +747,6 @@ public class JasnyRegexParser extends Parser {
 	public static class CharSetLiteralContext extends CharSetItemContext {
 		public TerminalNode STRING() { return getToken(JasnyRegexParser.STRING, 0); }
 		public CharSetLiteralContext(CharSetItemContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterCharSetLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitCharSetLiteral(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitCharSetLiteral(this);
@@ -847,14 +758,14 @@ public class JasnyRegexParser extends Parser {
 		CharSetItemContext _localctx = new CharSetItemContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_charSetItem);
 		try {
-			setState(127);
+			setState(131);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case STRING:
 				_localctx = new CharSetLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(123);
+				setState(127);
 				match(STRING);
 				}
 				break;
@@ -862,11 +773,11 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new CharSetRangeContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(124);
+				setState(128);
 				match(ZAKRES);
-				setState(125);
+				setState(129);
 				match(STRING);
-				setState(126);
+				setState(130);
 				match(STRING);
 				}
 				break;
@@ -902,14 +813,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode DATA() { return getToken(JasnyRegexParser.DATA, 0); }
 		public DateContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterDate(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitDate(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitDate(this);
 			else return visitor.visitChildren(this);
@@ -919,14 +822,6 @@ public class JasnyRegexParser extends Parser {
 	public static class NonWhitespaceContext extends AtomContext {
 		public TerminalNode NIE_ZNAK_BIALY() { return getToken(JasnyRegexParser.NIE_ZNAK_BIALY, 0); }
 		public NonWhitespaceContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterNonWhitespace(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitNonWhitespace(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitNonWhitespace(this);
@@ -938,14 +833,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode WIELKA_LITERA() { return getToken(JasnyRegexParser.WIELKA_LITERA, 0); }
 		public UpperLetterContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterUpperLetter(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitUpperLetter(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitUpperLetter(this);
 			else return visitor.visitChildren(this);
@@ -956,14 +843,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode KOD_POCZTOWY() { return getToken(JasnyRegexParser.KOD_POCZTOWY, 0); }
 		public PostalCodeContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterPostalCode(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitPostalCode(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitPostalCode(this);
 			else return visitor.visitChildren(this);
@@ -973,14 +852,6 @@ public class JasnyRegexParser extends Parser {
 	public static class NewlineContext extends AtomContext {
 		public TerminalNode NOWA_LINIA() { return getToken(JasnyRegexParser.NOWA_LINIA, 0); }
 		public NewlineContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterNewline(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitNewline(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitNewline(this);
@@ -993,14 +864,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode STRING() { return getToken(JasnyRegexParser.STRING, 0); }
 		public SingleCharContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterSingleChar(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitSingleChar(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitSingleChar(this);
 			else return visitor.visitChildren(this);
@@ -1010,14 +873,6 @@ public class JasnyRegexParser extends Parser {
 	public static class TabContext extends AtomContext {
 		public TerminalNode TAB() { return getToken(JasnyRegexParser.TAB, 0); }
 		public TabContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterTab(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitTab(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitTab(this);
@@ -1029,14 +884,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode DOWOLNY_ZNAK() { return getToken(JasnyRegexParser.DOWOLNY_ZNAK, 0); }
 		public AnyCharContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterAnyChar(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitAnyChar(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitAnyChar(this);
 			else return visitor.visitChildren(this);
@@ -1047,14 +894,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode NIE_CYFRA() { return getToken(JasnyRegexParser.NIE_CYFRA, 0); }
 		public NonDigitContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterNonDigit(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitNonDigit(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitNonDigit(this);
 			else return visitor.visitChildren(this);
@@ -1064,14 +903,6 @@ public class JasnyRegexParser extends Parser {
 	public static class HexContext extends AtomContext {
 		public TerminalNode HEX() { return getToken(JasnyRegexParser.HEX, 0); }
 		public HexContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterHex(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitHex(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitHex(this);
@@ -1084,14 +915,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode STRING() { return getToken(JasnyRegexParser.STRING, 0); }
 		public TextContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterText(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitText(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitText(this);
 			else return visitor.visitChildren(this);
@@ -1101,14 +924,6 @@ public class JasnyRegexParser extends Parser {
 	public static class EmailContext extends AtomContext {
 		public TerminalNode EMAIL() { return getToken(JasnyRegexParser.EMAIL, 0); }
 		public EmailContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterEmail(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitEmail(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitEmail(this);
@@ -1120,14 +935,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode CYFRA() { return getToken(JasnyRegexParser.CYFRA, 0); }
 		public DigitContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterDigit(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitDigit(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitDigit(this);
 			else return visitor.visitChildren(this);
@@ -1137,14 +944,6 @@ public class JasnyRegexParser extends Parser {
 	public static class AnchorStartContext extends AtomContext {
 		public TerminalNode ZACZNIJ_OD() { return getToken(JasnyRegexParser.ZACZNIJ_OD, 0); }
 		public AnchorStartContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterAnchorStart(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitAnchorStart(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitAnchorStart(this);
@@ -1156,14 +955,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode GRANICA_SLOWA() { return getToken(JasnyRegexParser.GRANICA_SLOWA, 0); }
 		public WordBoundaryContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterWordBoundary(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitWordBoundary(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitWordBoundary(this);
 			else return visitor.visitChildren(this);
@@ -1173,14 +964,6 @@ public class JasnyRegexParser extends Parser {
 	public static class AnchorEndContext extends AtomContext {
 		public TerminalNode ZAKONCZ_NA() { return getToken(JasnyRegexParser.ZAKONCZ_NA, 0); }
 		public AnchorEndContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterAnchorEnd(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitAnchorEnd(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitAnchorEnd(this);
@@ -1192,14 +975,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode ADRES_IP() { return getToken(JasnyRegexParser.ADRES_IP, 0); }
 		public IpAddressContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterIpAddress(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitIpAddress(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitIpAddress(this);
 			else return visitor.visitChildren(this);
@@ -1209,14 +984,6 @@ public class JasnyRegexParser extends Parser {
 	public static class UrlContext extends AtomContext {
 		public TerminalNode URL() { return getToken(JasnyRegexParser.URL, 0); }
 		public UrlContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterUrl(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitUrl(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitUrl(this);
@@ -1228,14 +995,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode MALA_LITERA() { return getToken(JasnyRegexParser.MALA_LITERA, 0); }
 		public LowerLetterContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterLowerLetter(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitLowerLetter(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitLowerLetter(this);
 			else return visitor.visitChildren(this);
@@ -1245,14 +1004,6 @@ public class JasnyRegexParser extends Parser {
 	public static class PhoneContext extends AtomContext {
 		public TerminalNode TELEFON() { return getToken(JasnyRegexParser.TELEFON, 0); }
 		public PhoneContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterPhone(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitPhone(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitPhone(this);
@@ -1264,14 +1015,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode LITERA() { return getToken(JasnyRegexParser.LITERA, 0); }
 		public LetterContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterLetter(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitLetter(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitLetter(this);
 			else return visitor.visitChildren(this);
@@ -1281,14 +1024,6 @@ public class JasnyRegexParser extends Parser {
 	public static class NonWordContext extends AtomContext {
 		public TerminalNode NIE_SLOWO() { return getToken(JasnyRegexParser.NIE_SLOWO, 0); }
 		public NonWordContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterNonWord(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitNonWord(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitNonWord(this);
@@ -1300,14 +1035,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode GODZINA() { return getToken(JasnyRegexParser.GODZINA, 0); }
 		public TimeContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterTime(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitTime(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitTime(this);
 			else return visitor.visitChildren(this);
@@ -1317,14 +1044,6 @@ public class JasnyRegexParser extends Parser {
 	public static class WhitespaceContext extends AtomContext {
 		public TerminalNode ZNAK_BIALY() { return getToken(JasnyRegexParser.ZNAK_BIALY, 0); }
 		public WhitespaceContext(AtomContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterWhitespace(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitWhitespace(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitWhitespace(this);
@@ -1336,14 +1055,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode SLOWO() { return getToken(JasnyRegexParser.SLOWO, 0); }
 		public WordContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterWord(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitWord(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitWord(this);
 			else return visitor.visitChildren(this);
@@ -1354,14 +1065,14 @@ public class JasnyRegexParser extends Parser {
 		AtomContext _localctx = new AtomContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_atom);
 		try {
-			setState(156);
+			setState(160);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ZACZNIJ_OD:
 				_localctx = new AnchorStartContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(129);
+				setState(133);
 				match(ZACZNIJ_OD);
 				}
 				break;
@@ -1369,7 +1080,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new AnchorEndContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(130);
+				setState(134);
 				match(ZAKONCZ_NA);
 				}
 				break;
@@ -1377,7 +1088,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new WordBoundaryContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(131);
+				setState(135);
 				match(GRANICA_SLOWA);
 				}
 				break;
@@ -1385,7 +1096,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new DigitContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(132);
+				setState(136);
 				match(CYFRA);
 				}
 				break;
@@ -1393,7 +1104,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new NonDigitContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(133);
+				setState(137);
 				match(NIE_CYFRA);
 				}
 				break;
@@ -1401,7 +1112,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new LetterContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(134);
+				setState(138);
 				match(LITERA);
 				}
 				break;
@@ -1409,7 +1120,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new UpperLetterContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(135);
+				setState(139);
 				match(WIELKA_LITERA);
 				}
 				break;
@@ -1417,7 +1128,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new LowerLetterContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(136);
+				setState(140);
 				match(MALA_LITERA);
 				}
 				break;
@@ -1425,7 +1136,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new WhitespaceContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(137);
+				setState(141);
 				match(ZNAK_BIALY);
 				}
 				break;
@@ -1433,7 +1144,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new NonWhitespaceContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(138);
+				setState(142);
 				match(NIE_ZNAK_BIALY);
 				}
 				break;
@@ -1441,7 +1152,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new AnyCharContext(_localctx);
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(139);
+				setState(143);
 				match(DOWOLNY_ZNAK);
 				}
 				break;
@@ -1449,7 +1160,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new WordContext(_localctx);
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(140);
+				setState(144);
 				match(SLOWO);
 				}
 				break;
@@ -1457,7 +1168,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new NonWordContext(_localctx);
 				enterOuterAlt(_localctx, 13);
 				{
-				setState(141);
+				setState(145);
 				match(NIE_SLOWO);
 				}
 				break;
@@ -1465,9 +1176,9 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new TextContext(_localctx);
 				enterOuterAlt(_localctx, 14);
 				{
-				setState(142);
+				setState(146);
 				match(TEKST);
-				setState(143);
+				setState(147);
 				match(STRING);
 				}
 				break;
@@ -1475,7 +1186,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new TabContext(_localctx);
 				enterOuterAlt(_localctx, 15);
 				{
-				setState(144);
+				setState(148);
 				match(TAB);
 				}
 				break;
@@ -1483,7 +1194,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new NewlineContext(_localctx);
 				enterOuterAlt(_localctx, 16);
 				{
-				setState(145);
+				setState(149);
 				match(NOWA_LINIA);
 				}
 				break;
@@ -1491,9 +1202,9 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new SingleCharContext(_localctx);
 				enterOuterAlt(_localctx, 17);
 				{
-				setState(146);
+				setState(150);
 				match(ZNAK);
-				setState(147);
+				setState(151);
 				match(STRING);
 				}
 				break;
@@ -1501,7 +1212,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new EmailContext(_localctx);
 				enterOuterAlt(_localctx, 18);
 				{
-				setState(148);
+				setState(152);
 				match(EMAIL);
 				}
 				break;
@@ -1509,7 +1220,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new PhoneContext(_localctx);
 				enterOuterAlt(_localctx, 19);
 				{
-				setState(149);
+				setState(153);
 				match(TELEFON);
 				}
 				break;
@@ -1517,7 +1228,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new PostalCodeContext(_localctx);
 				enterOuterAlt(_localctx, 20);
 				{
-				setState(150);
+				setState(154);
 				match(KOD_POCZTOWY);
 				}
 				break;
@@ -1525,7 +1236,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new IpAddressContext(_localctx);
 				enterOuterAlt(_localctx, 21);
 				{
-				setState(151);
+				setState(155);
 				match(ADRES_IP);
 				}
 				break;
@@ -1533,7 +1244,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new UrlContext(_localctx);
 				enterOuterAlt(_localctx, 22);
 				{
-				setState(152);
+				setState(156);
 				match(URL);
 				}
 				break;
@@ -1541,7 +1252,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new DateContext(_localctx);
 				enterOuterAlt(_localctx, 23);
 				{
-				setState(153);
+				setState(157);
 				match(DATA);
 				}
 				break;
@@ -1549,7 +1260,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new TimeContext(_localctx);
 				enterOuterAlt(_localctx, 24);
 				{
-				setState(154);
+				setState(158);
 				match(GODZINA);
 				}
 				break;
@@ -1557,7 +1268,7 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new HexContext(_localctx);
 				enterOuterAlt(_localctx, 25);
 				{
-				setState(155);
+				setState(159);
 				match(HEX);
 				}
 				break;
@@ -1594,14 +1305,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode LENIWIE() { return getToken(JasnyRegexParser.LENIWIE, 0); }
 		public OneOrMoreContext(QuantifierContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterOneOrMore(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitOneOrMore(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitOneOrMore(this);
 			else return visitor.visitChildren(this);
@@ -1612,14 +1315,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode ZERO_LUB_WIECEJ() { return getToken(JasnyRegexParser.ZERO_LUB_WIECEJ, 0); }
 		public TerminalNode LENIWIE() { return getToken(JasnyRegexParser.LENIWIE, 0); }
 		public ZeroOrMoreContext(QuantifierContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterZeroOrMore(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitZeroOrMore(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitZeroOrMore(this);
@@ -1637,14 +1332,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode LENIWIE() { return getToken(JasnyRegexParser.LENIWIE, 0); }
 		public RangeContext(QuantifierContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterRange(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitRange(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitRange(this);
 			else return visitor.visitChildren(this);
@@ -1656,14 +1343,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode LENIWIE() { return getToken(JasnyRegexParser.LENIWIE, 0); }
 		public OptionalContext(QuantifierContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterOptional(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitOptional(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitOptional(this);
 			else return visitor.visitChildren(this);
@@ -1674,14 +1353,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode DOKLADNIE() { return getToken(JasnyRegexParser.DOKLADNIE, 0); }
 		public TerminalNode NUMBER() { return getToken(JasnyRegexParser.NUMBER, 0); }
 		public ExactlyContext(QuantifierContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterExactly(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitExactly(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitExactly(this);
@@ -1695,14 +1366,6 @@ public class JasnyRegexParser extends Parser {
 		public TerminalNode LENIWIE() { return getToken(JasnyRegexParser.LENIWIE, 0); }
 		public MinimumContext(QuantifierContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).enterMinimum(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JasnyRegexParserListener ) ((JasnyRegexParserListener)listener).exitMinimum(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof JasnyRegexParserVisitor ) return ((JasnyRegexParserVisitor<? extends T>)visitor).visitMinimum(this);
 			else return visitor.visitChildren(this);
@@ -1714,33 +1377,15 @@ public class JasnyRegexParser extends Parser {
 		enterRule(_localctx, 8, RULE_quantifier);
 		int _la;
 		try {
-			setState(184);
+			setState(188);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case OPCJONALNIE:
 				_localctx = new OptionalContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(158);
-				match(OPCJONALNIE);
-				setState(160);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				if (_la==LENIWIE) {
-					{
-					setState(159);
-					match(LENIWIE);
-					}
-				}
-
-				}
-				break;
-			case JEDEN_LUB_WIECEJ:
-				_localctx = new OneOrMoreContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
 				setState(162);
-				match(JEDEN_LUB_WIECEJ);
+				match(OPCJONALNIE);
 				setState(164);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -1753,12 +1398,12 @@ public class JasnyRegexParser extends Parser {
 
 				}
 				break;
-			case ZERO_LUB_WIECEJ:
-				_localctx = new ZeroOrMoreContext(_localctx);
-				enterOuterAlt(_localctx, 3);
+			case JEDEN_LUB_WIECEJ:
+				_localctx = new OneOrMoreContext(_localctx);
+				enterOuterAlt(_localctx, 2);
 				{
 				setState(166);
-				match(ZERO_LUB_WIECEJ);
+				match(JEDEN_LUB_WIECEJ);
 				setState(168);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -1771,13 +1416,31 @@ public class JasnyRegexParser extends Parser {
 
 				}
 				break;
+			case ZERO_LUB_WIECEJ:
+				_localctx = new ZeroOrMoreContext(_localctx);
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(170);
+				match(ZERO_LUB_WIECEJ);
+				setState(172);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==LENIWIE) {
+					{
+					setState(171);
+					match(LENIWIE);
+					}
+				}
+
+				}
+				break;
 			case DOKLADNIE:
 				_localctx = new ExactlyContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(170);
+				setState(174);
 				match(DOKLADNIE);
-				setState(171);
+				setState(175);
 				match(NUMBER);
 				}
 				break;
@@ -1785,20 +1448,20 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new RangeContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(172);
+				setState(176);
 				match(OD);
-				setState(173);
-				match(NUMBER);
-				setState(174);
-				match(DO);
-				setState(175);
-				match(NUMBER);
 				setState(177);
+				match(NUMBER);
+				setState(178);
+				match(DO);
+				setState(179);
+				match(NUMBER);
+				setState(181);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==LENIWIE) {
 					{
-					setState(176);
+					setState(180);
 					match(LENIWIE);
 					}
 				}
@@ -1809,16 +1472,16 @@ public class JasnyRegexParser extends Parser {
 				_localctx = new MinimumContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(179);
+				setState(183);
 				match(MINIMUM);
-				setState(180);
+				setState(184);
 				match(NUMBER);
-				setState(182);
+				setState(186);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==LENIWIE) {
 					{
-					setState(181);
+					setState(185);
 					match(LENIWIE);
 					}
 				}
@@ -1841,7 +1504,7 @@ public class JasnyRegexParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u00011\u00bb\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u00011\u00bf\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0001"+
 		"\u0000\u0004\u0000\f\b\u0000\u000b\u0000\f\u0000\r\u0001\u0000\u0001\u0000"+
 		"\u0001\u0001\u0001\u0001\u0003\u0001\u0014\b\u0001\u0001\u0001\u0001\u0001"+
@@ -1849,130 +1512,133 @@ public class JasnyRegexParser extends Parser {
 		"\f\u0001\u001c\u0001\u0001\u0001\u0001\u0003\u0001!\b\u0001\u0001\u0001"+
 		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0004\u0001"+
 		")\b\u0001\u000b\u0001\f\u0001*\u0001\u0001\u0001\u0001\u0003\u0001/\b"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0004\u0001;\b"+
-		"\u0001\u000b\u0001\f\u0001<\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0004\u0001E\b\u0001\u000b\u0001\f\u0001"+
-		"F\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0004\u0001O\b\u0001\u000b\u0001\f\u0001P\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0004\u0001Y\b\u0001\u000b"+
-		"\u0001\f\u0001Z\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0004\u0001c\b\u0001\u000b\u0001\f\u0001d\u0001\u0001"+
-		"\u0001\u0001\u0003\u0001i\b\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0004\u0001p\b\u0001\u000b\u0001\f\u0001q\u0001"+
-		"\u0001\u0001\u0001\u0003\u0001v\b\u0001\u0001\u0001\u0001\u0001\u0003"+
-		"\u0001z\b\u0001\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0003"+
-		"\u0002\u0080\b\u0002\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0004"+
+		"\u00016\b\u0001\u000b\u0001\f\u00017\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0004\u0001?\b\u0001\u000b\u0001\f\u0001@\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0004"+
+		"\u0001I\b\u0001\u000b\u0001\f\u0001J\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0004\u0001S\b\u0001\u000b\u0001"+
+		"\f\u0001T\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0004\u0001]\b\u0001\u000b\u0001\f\u0001^\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0004\u0001g\b"+
+		"\u0001\u000b\u0001\f\u0001h\u0001\u0001\u0001\u0001\u0003\u0001m\b\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0004\u0001"+
+		"t\b\u0001\u000b\u0001\f\u0001u\u0001\u0001\u0001\u0001\u0003\u0001z\b"+
+		"\u0001\u0001\u0001\u0001\u0001\u0003\u0001~\b\u0001\u0001\u0002\u0001"+
+		"\u0002\u0001\u0002\u0001\u0002\u0003\u0002\u0084\b\u0002\u0001\u0003\u0001"+
 		"\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001"+
 		"\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001"+
 		"\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001"+
-		"\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0003\u0003\u009d"+
-		"\b\u0003\u0001\u0004\u0001\u0004\u0003\u0004\u00a1\b\u0004\u0001\u0004"+
-		"\u0001\u0004\u0003\u0004\u00a5\b\u0004\u0001\u0004\u0001\u0004\u0003\u0004"+
-		"\u00a9\b\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004"+
-		"\u0001\u0004\u0001\u0004\u0003\u0004\u00b2\b\u0004\u0001\u0004\u0001\u0004"+
-		"\u0001\u0004\u0003\u0004\u00b7\b\u0004\u0003\u0004\u00b9\b\u0004\u0001"+
-		"\u0004\u0000\u0000\u0005\u0000\u0002\u0004\u0006\b\u0000\u0000\u00ef\u0000"+
-		"\u000b\u0001\u0000\u0000\u0000\u0002y\u0001\u0000\u0000\u0000\u0004\u007f"+
-		"\u0001\u0000\u0000\u0000\u0006\u009c\u0001\u0000\u0000\u0000\b\u00b8\u0001"+
-		"\u0000\u0000\u0000\n\f\u0003\u0002\u0001\u0000\u000b\n\u0001\u0000\u0000"+
-		"\u0000\f\r\u0001\u0000\u0000\u0000\r\u000b\u0001\u0000\u0000\u0000\r\u000e"+
-		"\u0001\u0000\u0000\u0000\u000e\u000f\u0001\u0000\u0000\u0000\u000f\u0010"+
-		"\u0005\u0000\u0000\u0001\u0010\u0001\u0001\u0000\u0000\u0000\u0011\u0013"+
-		"\u0003\u0006\u0003\u0000\u0012\u0014\u0003\b\u0004\u0000\u0013\u0012\u0001"+
-		"\u0000\u0000\u0000\u0013\u0014\u0001\u0000\u0000\u0000\u0014\u0015\u0001"+
-		"\u0000\u0000\u0000\u0015\u0016\u0005.\u0000\u0000\u0016z\u0001\u0000\u0000"+
-		"\u0000\u0017\u0018\u0005#\u0000\u0000\u0018\u001a\u0005,\u0000\u0000\u0019"+
-		"\u001b\u0003\u0002\u0001\u0000\u001a\u0019\u0001\u0000\u0000\u0000\u001b"+
-		"\u001c\u0001\u0000\u0000\u0000\u001c\u001a\u0001\u0000\u0000\u0000\u001c"+
-		"\u001d\u0001\u0000\u0000\u0000\u001d\u001e\u0001\u0000\u0000\u0000\u001e"+
-		" \u0005-\u0000\u0000\u001f!\u0003\b\u0004\u0000 \u001f\u0001\u0000\u0000"+
-		"\u0000 !\u0001\u0000\u0000\u0000!\"\u0001\u0000\u0000\u0000\"#\u0005."+
-		"\u0000\u0000#z\u0001\u0000\u0000\u0000$%\u0005$\u0000\u0000%&\u00050\u0000"+
-		"\u0000&(\u0005,\u0000\u0000\')\u0003\u0002\u0001\u0000(\'\u0001\u0000"+
-		"\u0000\u0000)*\u0001\u0000\u0000\u0000*(\u0001\u0000\u0000\u0000*+\u0001"+
-		"\u0000\u0000\u0000+,\u0001\u0000\u0000\u0000,.\u0005-\u0000\u0000-/\u0003"+
-		"\b\u0004\u0000.-\u0001\u0000\u0000\u0000./\u0001\u0000\u0000\u0000/0\u0001"+
-		"\u0000\u0000\u000001\u0005.\u0000\u00001z\u0001\u0000\u0000\u000023\u0003"+
-		"\u0006\u0003\u000034\u0005%\u0000\u000045\u0003\u0006\u0003\u000056\u0005"+
-		".\u0000\u00006z\u0001\u0000\u0000\u000078\u0005&\u0000\u00008:\u0005,"+
-		"\u0000\u00009;\u0003\u0002\u0001\u0000:9\u0001\u0000\u0000\u0000;<\u0001"+
-		"\u0000\u0000\u0000<:\u0001\u0000\u0000\u0000<=\u0001\u0000\u0000\u0000"+
-		"=>\u0001\u0000\u0000\u0000>?\u0005-\u0000\u0000?@\u0005.\u0000\u0000@"+
-		"z\u0001\u0000\u0000\u0000AB\u0005\'\u0000\u0000BD\u0005,\u0000\u0000C"+
-		"E\u0003\u0002\u0001\u0000DC\u0001\u0000\u0000\u0000EF\u0001\u0000\u0000"+
-		"\u0000FD\u0001\u0000\u0000\u0000FG\u0001\u0000\u0000\u0000GH\u0001\u0000"+
-		"\u0000\u0000HI\u0005-\u0000\u0000IJ\u0005.\u0000\u0000Jz\u0001\u0000\u0000"+
-		"\u0000KL\u0005(\u0000\u0000LN\u0005,\u0000\u0000MO\u0003\u0002\u0001\u0000"+
-		"NM\u0001\u0000\u0000\u0000OP\u0001\u0000\u0000\u0000PN\u0001\u0000\u0000"+
-		"\u0000PQ\u0001\u0000\u0000\u0000QR\u0001\u0000\u0000\u0000RS\u0005-\u0000"+
-		"\u0000ST\u0005.\u0000\u0000Tz\u0001\u0000\u0000\u0000UV\u0005)\u0000\u0000"+
-		"VX\u0005,\u0000\u0000WY\u0003\u0002\u0001\u0000XW\u0001\u0000\u0000\u0000"+
-		"YZ\u0001\u0000\u0000\u0000ZX\u0001\u0000\u0000\u0000Z[\u0001\u0000\u0000"+
-		"\u0000[\\\u0001\u0000\u0000\u0000\\]\u0005-\u0000\u0000]^\u0005.\u0000"+
-		"\u0000^z\u0001\u0000\u0000\u0000_`\u0005*\u0000\u0000`b\u0005,\u0000\u0000"+
-		"ac\u0003\u0004\u0002\u0000ba\u0001\u0000\u0000\u0000cd\u0001\u0000\u0000"+
-		"\u0000db\u0001\u0000\u0000\u0000de\u0001\u0000\u0000\u0000ef\u0001\u0000"+
-		"\u0000\u0000fh\u0005-\u0000\u0000gi\u0003\b\u0004\u0000hg\u0001\u0000"+
-		"\u0000\u0000hi\u0001\u0000\u0000\u0000ij\u0001\u0000\u0000\u0000jk\u0005"+
-		".\u0000\u0000kz\u0001\u0000\u0000\u0000lm\u0005+\u0000\u0000mo\u0005,"+
-		"\u0000\u0000np\u0003\u0004\u0002\u0000on\u0001\u0000\u0000\u0000pq\u0001"+
-		"\u0000\u0000\u0000qo\u0001\u0000\u0000\u0000qr\u0001\u0000\u0000\u0000"+
-		"rs\u0001\u0000\u0000\u0000su\u0005-\u0000\u0000tv\u0003\b\u0004\u0000"+
-		"ut\u0001\u0000\u0000\u0000uv\u0001\u0000\u0000\u0000vw\u0001\u0000\u0000"+
-		"\u0000wx\u0005.\u0000\u0000xz\u0001\u0000\u0000\u0000y\u0011\u0001\u0000"+
-		"\u0000\u0000y\u0017\u0001\u0000\u0000\u0000y$\u0001\u0000\u0000\u0000"+
-		"y2\u0001\u0000\u0000\u0000y7\u0001\u0000\u0000\u0000yA\u0001\u0000\u0000"+
-		"\u0000yK\u0001\u0000\u0000\u0000yU\u0001\u0000\u0000\u0000y_\u0001\u0000"+
-		"\u0000\u0000yl\u0001\u0000\u0000\u0000z\u0003\u0001\u0000\u0000\u0000"+
-		"{\u0080\u00050\u0000\u0000|}\u0005\u0011\u0000\u0000}~\u00050\u0000\u0000"+
-		"~\u0080\u00050\u0000\u0000\u007f{\u0001\u0000\u0000\u0000\u007f|\u0001"+
-		"\u0000\u0000\u0000\u0080\u0005\u0001\u0000\u0000\u0000\u0081\u009d\u0005"+
-		"\u0001\u0000\u0000\u0082\u009d\u0005\u0002\u0000\u0000\u0083\u009d\u0005"+
-		"\u0003\u0000\u0000\u0084\u009d\u0005\u0004\u0000\u0000\u0085\u009d\u0005"+
-		"\u0005\u0000\u0000\u0086\u009d\u0005\u0006\u0000\u0000\u0087\u009d\u0005"+
-		"\u0007\u0000\u0000\u0088\u009d\u0005\b\u0000\u0000\u0089\u009d\u0005\t"+
-		"\u0000\u0000\u008a\u009d\u0005\n\u0000\u0000\u008b\u009d\u0005\u000b\u0000"+
-		"\u0000\u008c\u009d\u0005\f\u0000\u0000\u008d\u009d\u0005\r\u0000\u0000"+
-		"\u008e\u008f\u0005\u000e\u0000\u0000\u008f\u009d\u00050\u0000\u0000\u0090"+
-		"\u009d\u0005\u000f\u0000\u0000\u0091\u009d\u0005\u0010\u0000\u0000\u0092"+
-		"\u0093\u0005\u0012\u0000\u0000\u0093\u009d\u00050\u0000\u0000\u0094\u009d"+
-		"\u0005\u0013\u0000\u0000\u0095\u009d\u0005\u0014\u0000\u0000\u0096\u009d"+
-		"\u0005\u0015\u0000\u0000\u0097\u009d\u0005\u0016\u0000\u0000\u0098\u009d"+
-		"\u0005\u0017\u0000\u0000\u0099\u009d\u0005\u0018\u0000\u0000\u009a\u009d"+
-		"\u0005\u0019\u0000\u0000\u009b\u009d\u0005\u001a\u0000\u0000\u009c\u0081"+
-		"\u0001\u0000\u0000\u0000\u009c\u0082\u0001\u0000\u0000\u0000\u009c\u0083"+
-		"\u0001\u0000\u0000\u0000\u009c\u0084\u0001\u0000\u0000\u0000\u009c\u0085"+
-		"\u0001\u0000\u0000\u0000\u009c\u0086\u0001\u0000\u0000\u0000\u009c\u0087"+
-		"\u0001\u0000\u0000\u0000\u009c\u0088\u0001\u0000\u0000\u0000\u009c\u0089"+
-		"\u0001\u0000\u0000\u0000\u009c\u008a\u0001\u0000\u0000\u0000\u009c\u008b"+
-		"\u0001\u0000\u0000\u0000\u009c\u008c\u0001\u0000\u0000\u0000\u009c\u008d"+
-		"\u0001\u0000\u0000\u0000\u009c\u008e\u0001\u0000\u0000\u0000\u009c\u0090"+
-		"\u0001\u0000\u0000\u0000\u009c\u0091\u0001\u0000\u0000\u0000\u009c\u0092"+
-		"\u0001\u0000\u0000\u0000\u009c\u0094\u0001\u0000\u0000\u0000\u009c\u0095"+
-		"\u0001\u0000\u0000\u0000\u009c\u0096\u0001\u0000\u0000\u0000\u009c\u0097"+
-		"\u0001\u0000\u0000\u0000\u009c\u0098\u0001\u0000\u0000\u0000\u009c\u0099"+
-		"\u0001\u0000\u0000\u0000\u009c\u009a\u0001\u0000\u0000\u0000\u009c\u009b"+
-		"\u0001\u0000\u0000\u0000\u009d\u0007\u0001\u0000\u0000\u0000\u009e\u00a0"+
-		"\u0005\u001b\u0000\u0000\u009f\u00a1\u0005\"\u0000\u0000\u00a0\u009f\u0001"+
-		"\u0000\u0000\u0000\u00a0\u00a1\u0001\u0000\u0000\u0000\u00a1\u00b9\u0001"+
-		"\u0000\u0000\u0000\u00a2\u00a4\u0005\u001c\u0000\u0000\u00a3\u00a5\u0005"+
-		"\"\u0000\u0000\u00a4\u00a3\u0001\u0000\u0000\u0000\u00a4\u00a5\u0001\u0000"+
-		"\u0000\u0000\u00a5\u00b9\u0001\u0000\u0000\u0000\u00a6\u00a8\u0005\u001d"+
-		"\u0000\u0000\u00a7\u00a9\u0005\"\u0000\u0000\u00a8\u00a7\u0001\u0000\u0000"+
-		"\u0000\u00a8\u00a9\u0001\u0000\u0000\u0000\u00a9\u00b9\u0001\u0000\u0000"+
-		"\u0000\u00aa\u00ab\u0005\u001e\u0000\u0000\u00ab\u00b9\u0005/\u0000\u0000"+
-		"\u00ac\u00ad\u0005\u001f\u0000\u0000\u00ad\u00ae\u0005/\u0000\u0000\u00ae"+
-		"\u00af\u0005 \u0000\u0000\u00af\u00b1\u0005/\u0000\u0000\u00b0\u00b2\u0005"+
-		"\"\u0000\u0000\u00b1\u00b0\u0001\u0000\u0000\u0000\u00b1\u00b2\u0001\u0000"+
-		"\u0000\u0000\u00b2\u00b9\u0001\u0000\u0000\u0000\u00b3\u00b4\u0005!\u0000"+
-		"\u0000\u00b4\u00b6\u0005/\u0000\u0000\u00b5\u00b7\u0005\"\u0000\u0000"+
-		"\u00b6\u00b5\u0001\u0000\u0000\u0000\u00b6\u00b7\u0001\u0000\u0000\u0000"+
-		"\u00b7\u00b9\u0001\u0000\u0000\u0000\u00b8\u009e\u0001\u0000\u0000\u0000"+
-		"\u00b8\u00a2\u0001\u0000\u0000\u0000\u00b8\u00a6\u0001\u0000\u0000\u0000"+
-		"\u00b8\u00aa\u0001\u0000\u0000\u0000\u00b8\u00ac\u0001\u0000\u0000\u0000"+
-		"\u00b8\u00b3\u0001\u0000\u0000\u0000\u00b9\t\u0001\u0000\u0000\u0000\u0017"+
-		"\r\u0013\u001c *.<FPZdhquy\u007f\u009c\u00a0\u00a4\u00a8\u00b1\u00b6\u00b8";
+		"\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001"+
+		"\u0003\u0001\u0003\u0003\u0003\u00a1\b\u0003\u0001\u0004\u0001\u0004\u0003"+
+		"\u0004\u00a5\b\u0004\u0001\u0004\u0001\u0004\u0003\u0004\u00a9\b\u0004"+
+		"\u0001\u0004\u0001\u0004\u0003\u0004\u00ad\b\u0004\u0001\u0004\u0001\u0004"+
+		"\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0003\u0004"+
+		"\u00b6\b\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0003\u0004\u00bb\b"+
+		"\u0004\u0003\u0004\u00bd\b\u0004\u0001\u0004\u0000\u0000\u0005\u0000\u0002"+
+		"\u0004\u0006\b\u0000\u0000\u00f4\u0000\u000b\u0001\u0000\u0000\u0000\u0002"+
+		"}\u0001\u0000\u0000\u0000\u0004\u0083\u0001\u0000\u0000\u0000\u0006\u00a0"+
+		"\u0001\u0000\u0000\u0000\b\u00bc\u0001\u0000\u0000\u0000\n\f\u0003\u0002"+
+		"\u0001\u0000\u000b\n\u0001\u0000\u0000\u0000\f\r\u0001\u0000\u0000\u0000"+
+		"\r\u000b\u0001\u0000\u0000\u0000\r\u000e\u0001\u0000\u0000\u0000\u000e"+
+		"\u000f\u0001\u0000\u0000\u0000\u000f\u0010\u0005\u0000\u0000\u0001\u0010"+
+		"\u0001\u0001\u0000\u0000\u0000\u0011\u0013\u0003\u0006\u0003\u0000\u0012"+
+		"\u0014\u0003\b\u0004\u0000\u0013\u0012\u0001\u0000\u0000\u0000\u0013\u0014"+
+		"\u0001\u0000\u0000\u0000\u0014\u0015\u0001\u0000\u0000\u0000\u0015\u0016"+
+		"\u0005.\u0000\u0000\u0016~\u0001\u0000\u0000\u0000\u0017\u0018\u0005#"+
+		"\u0000\u0000\u0018\u001a\u0005,\u0000\u0000\u0019\u001b\u0003\u0002\u0001"+
+		"\u0000\u001a\u0019\u0001\u0000\u0000\u0000\u001b\u001c\u0001\u0000\u0000"+
+		"\u0000\u001c\u001a\u0001\u0000\u0000\u0000\u001c\u001d\u0001\u0000\u0000"+
+		"\u0000\u001d\u001e\u0001\u0000\u0000\u0000\u001e \u0005-\u0000\u0000\u001f"+
+		"!\u0003\b\u0004\u0000 \u001f\u0001\u0000\u0000\u0000 !\u0001\u0000\u0000"+
+		"\u0000!\"\u0001\u0000\u0000\u0000\"#\u0005.\u0000\u0000#~\u0001\u0000"+
+		"\u0000\u0000$%\u0005$\u0000\u0000%&\u00050\u0000\u0000&(\u0005,\u0000"+
+		"\u0000\')\u0003\u0002\u0001\u0000(\'\u0001\u0000\u0000\u0000)*\u0001\u0000"+
+		"\u0000\u0000*(\u0001\u0000\u0000\u0000*+\u0001\u0000\u0000\u0000+,\u0001"+
+		"\u0000\u0000\u0000,.\u0005-\u0000\u0000-/\u0003\b\u0004\u0000.-\u0001"+
+		"\u0000\u0000\u0000./\u0001\u0000\u0000\u0000/0\u0001\u0000\u0000\u0000"+
+		"01\u0005.\u0000\u00001~\u0001\u0000\u0000\u000025\u0003\u0006\u0003\u0000"+
+		"34\u0005%\u0000\u000046\u0003\u0006\u0003\u000053\u0001\u0000\u0000\u0000"+
+		"67\u0001\u0000\u0000\u000075\u0001\u0000\u0000\u000078\u0001\u0000\u0000"+
+		"\u000089\u0001\u0000\u0000\u00009:\u0005.\u0000\u0000:~\u0001\u0000\u0000"+
+		"\u0000;<\u0005&\u0000\u0000<>\u0005,\u0000\u0000=?\u0003\u0002\u0001\u0000"+
+		">=\u0001\u0000\u0000\u0000?@\u0001\u0000\u0000\u0000@>\u0001\u0000\u0000"+
+		"\u0000@A\u0001\u0000\u0000\u0000AB\u0001\u0000\u0000\u0000BC\u0005-\u0000"+
+		"\u0000CD\u0005.\u0000\u0000D~\u0001\u0000\u0000\u0000EF\u0005\'\u0000"+
+		"\u0000FH\u0005,\u0000\u0000GI\u0003\u0002\u0001\u0000HG\u0001\u0000\u0000"+
+		"\u0000IJ\u0001\u0000\u0000\u0000JH\u0001\u0000\u0000\u0000JK\u0001\u0000"+
+		"\u0000\u0000KL\u0001\u0000\u0000\u0000LM\u0005-\u0000\u0000MN\u0005.\u0000"+
+		"\u0000N~\u0001\u0000\u0000\u0000OP\u0005(\u0000\u0000PR\u0005,\u0000\u0000"+
+		"QS\u0003\u0002\u0001\u0000RQ\u0001\u0000\u0000\u0000ST\u0001\u0000\u0000"+
+		"\u0000TR\u0001\u0000\u0000\u0000TU\u0001\u0000\u0000\u0000UV\u0001\u0000"+
+		"\u0000\u0000VW\u0005-\u0000\u0000WX\u0005.\u0000\u0000X~\u0001\u0000\u0000"+
+		"\u0000YZ\u0005)\u0000\u0000Z\\\u0005,\u0000\u0000[]\u0003\u0002\u0001"+
+		"\u0000\\[\u0001\u0000\u0000\u0000]^\u0001\u0000\u0000\u0000^\\\u0001\u0000"+
+		"\u0000\u0000^_\u0001\u0000\u0000\u0000_`\u0001\u0000\u0000\u0000`a\u0005"+
+		"-\u0000\u0000ab\u0005.\u0000\u0000b~\u0001\u0000\u0000\u0000cd\u0005*"+
+		"\u0000\u0000df\u0005,\u0000\u0000eg\u0003\u0004\u0002\u0000fe\u0001\u0000"+
+		"\u0000\u0000gh\u0001\u0000\u0000\u0000hf\u0001\u0000\u0000\u0000hi\u0001"+
+		"\u0000\u0000\u0000ij\u0001\u0000\u0000\u0000jl\u0005-\u0000\u0000km\u0003"+
+		"\b\u0004\u0000lk\u0001\u0000\u0000\u0000lm\u0001\u0000\u0000\u0000mn\u0001"+
+		"\u0000\u0000\u0000no\u0005.\u0000\u0000o~\u0001\u0000\u0000\u0000pq\u0005"+
+		"+\u0000\u0000qs\u0005,\u0000\u0000rt\u0003\u0004\u0002\u0000sr\u0001\u0000"+
+		"\u0000\u0000tu\u0001\u0000\u0000\u0000us\u0001\u0000\u0000\u0000uv\u0001"+
+		"\u0000\u0000\u0000vw\u0001\u0000\u0000\u0000wy\u0005-\u0000\u0000xz\u0003"+
+		"\b\u0004\u0000yx\u0001\u0000\u0000\u0000yz\u0001\u0000\u0000\u0000z{\u0001"+
+		"\u0000\u0000\u0000{|\u0005.\u0000\u0000|~\u0001\u0000\u0000\u0000}\u0011"+
+		"\u0001\u0000\u0000\u0000}\u0017\u0001\u0000\u0000\u0000}$\u0001\u0000"+
+		"\u0000\u0000}2\u0001\u0000\u0000\u0000};\u0001\u0000\u0000\u0000}E\u0001"+
+		"\u0000\u0000\u0000}O\u0001\u0000\u0000\u0000}Y\u0001\u0000\u0000\u0000"+
+		"}c\u0001\u0000\u0000\u0000}p\u0001\u0000\u0000\u0000~\u0003\u0001\u0000"+
+		"\u0000\u0000\u007f\u0084\u00050\u0000\u0000\u0080\u0081\u0005\u0011\u0000"+
+		"\u0000\u0081\u0082\u00050\u0000\u0000\u0082\u0084\u00050\u0000\u0000\u0083"+
+		"\u007f\u0001\u0000\u0000\u0000\u0083\u0080\u0001\u0000\u0000\u0000\u0084"+
+		"\u0005\u0001\u0000\u0000\u0000\u0085\u00a1\u0005\u0001\u0000\u0000\u0086"+
+		"\u00a1\u0005\u0002\u0000\u0000\u0087\u00a1\u0005\u0003\u0000\u0000\u0088"+
+		"\u00a1\u0005\u0004\u0000\u0000\u0089\u00a1\u0005\u0005\u0000\u0000\u008a"+
+		"\u00a1\u0005\u0006\u0000\u0000\u008b\u00a1\u0005\u0007\u0000\u0000\u008c"+
+		"\u00a1\u0005\b\u0000\u0000\u008d\u00a1\u0005\t\u0000\u0000\u008e\u00a1"+
+		"\u0005\n\u0000\u0000\u008f\u00a1\u0005\u000b\u0000\u0000\u0090\u00a1\u0005"+
+		"\f\u0000\u0000\u0091\u00a1\u0005\r\u0000\u0000\u0092\u0093\u0005\u000e"+
+		"\u0000\u0000\u0093\u00a1\u00050\u0000\u0000\u0094\u00a1\u0005\u000f\u0000"+
+		"\u0000\u0095\u00a1\u0005\u0010\u0000\u0000\u0096\u0097\u0005\u0012\u0000"+
+		"\u0000\u0097\u00a1\u00050\u0000\u0000\u0098\u00a1\u0005\u0013\u0000\u0000"+
+		"\u0099\u00a1\u0005\u0014\u0000\u0000\u009a\u00a1\u0005\u0015\u0000\u0000"+
+		"\u009b\u00a1\u0005\u0016\u0000\u0000\u009c\u00a1\u0005\u0017\u0000\u0000"+
+		"\u009d\u00a1\u0005\u0018\u0000\u0000\u009e\u00a1\u0005\u0019\u0000\u0000"+
+		"\u009f\u00a1\u0005\u001a\u0000\u0000\u00a0\u0085\u0001\u0000\u0000\u0000"+
+		"\u00a0\u0086\u0001\u0000\u0000\u0000\u00a0\u0087\u0001\u0000\u0000\u0000"+
+		"\u00a0\u0088\u0001\u0000\u0000\u0000\u00a0\u0089\u0001\u0000\u0000\u0000"+
+		"\u00a0\u008a\u0001\u0000\u0000\u0000\u00a0\u008b\u0001\u0000\u0000\u0000"+
+		"\u00a0\u008c\u0001\u0000\u0000\u0000\u00a0\u008d\u0001\u0000\u0000\u0000"+
+		"\u00a0\u008e\u0001\u0000\u0000\u0000\u00a0\u008f\u0001\u0000\u0000\u0000"+
+		"\u00a0\u0090\u0001\u0000\u0000\u0000\u00a0\u0091\u0001\u0000\u0000\u0000"+
+		"\u00a0\u0092\u0001\u0000\u0000\u0000\u00a0\u0094\u0001\u0000\u0000\u0000"+
+		"\u00a0\u0095\u0001\u0000\u0000\u0000\u00a0\u0096\u0001\u0000\u0000\u0000"+
+		"\u00a0\u0098\u0001\u0000\u0000\u0000\u00a0\u0099\u0001\u0000\u0000\u0000"+
+		"\u00a0\u009a\u0001\u0000\u0000\u0000\u00a0\u009b\u0001\u0000\u0000\u0000"+
+		"\u00a0\u009c\u0001\u0000\u0000\u0000\u00a0\u009d\u0001\u0000\u0000\u0000"+
+		"\u00a0\u009e\u0001\u0000\u0000\u0000\u00a0\u009f\u0001\u0000\u0000\u0000"+
+		"\u00a1\u0007\u0001\u0000\u0000\u0000\u00a2\u00a4\u0005\u001b\u0000\u0000"+
+		"\u00a3\u00a5\u0005\"\u0000\u0000\u00a4\u00a3\u0001\u0000\u0000\u0000\u00a4"+
+		"\u00a5\u0001\u0000\u0000\u0000\u00a5\u00bd\u0001\u0000\u0000\u0000\u00a6"+
+		"\u00a8\u0005\u001c\u0000\u0000\u00a7\u00a9\u0005\"\u0000\u0000\u00a8\u00a7"+
+		"\u0001\u0000\u0000\u0000\u00a8\u00a9\u0001\u0000\u0000\u0000\u00a9\u00bd"+
+		"\u0001\u0000\u0000\u0000\u00aa\u00ac\u0005\u001d\u0000\u0000\u00ab\u00ad"+
+		"\u0005\"\u0000\u0000\u00ac\u00ab\u0001\u0000\u0000\u0000\u00ac\u00ad\u0001"+
+		"\u0000\u0000\u0000\u00ad\u00bd\u0001\u0000\u0000\u0000\u00ae\u00af\u0005"+
+		"\u001e\u0000\u0000\u00af\u00bd\u0005/\u0000\u0000\u00b0\u00b1\u0005\u001f"+
+		"\u0000\u0000\u00b1\u00b2\u0005/\u0000\u0000\u00b2\u00b3\u0005 \u0000\u0000"+
+		"\u00b3\u00b5\u0005/\u0000\u0000\u00b4\u00b6\u0005\"\u0000\u0000\u00b5"+
+		"\u00b4\u0001\u0000\u0000\u0000\u00b5\u00b6\u0001\u0000\u0000\u0000\u00b6"+
+		"\u00bd\u0001\u0000\u0000\u0000\u00b7\u00b8\u0005!\u0000\u0000\u00b8\u00ba"+
+		"\u0005/\u0000\u0000\u00b9\u00bb\u0005\"\u0000\u0000\u00ba\u00b9\u0001"+
+		"\u0000\u0000\u0000\u00ba\u00bb\u0001\u0000\u0000\u0000\u00bb\u00bd\u0001"+
+		"\u0000\u0000\u0000\u00bc\u00a2\u0001\u0000\u0000\u0000\u00bc\u00a6\u0001"+
+		"\u0000\u0000\u0000\u00bc\u00aa\u0001\u0000\u0000\u0000\u00bc\u00ae\u0001"+
+		"\u0000\u0000\u0000\u00bc\u00b0\u0001\u0000\u0000\u0000\u00bc\u00b7\u0001"+
+		"\u0000\u0000\u0000\u00bd\t\u0001\u0000\u0000\u0000\u0018\r\u0013\u001c"+
+		" *.7@JT^hluy}\u0083\u00a0\u00a4\u00a8\u00ac\u00b5\u00ba\u00bc";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -1,74 +1,260 @@
-# ======================================================
-# Przykłady wyrażeń JasnyRegex
-# Linie zaczynające się od # są komentarzami
-# Puste linie są pomijane
-# ======================================================
+# ======================================================================
+#   Przykłady wyrażeń JasnyRegex – pełny przegląd funkcjonalności
+# ======================================================================
+#
+#   Każda linia (poza komentarzami i pustymi) to poprawne wyrażenie
+#   JasnyRegex, które można wkleić do translatora.
+#
+#   Komentarze zaczynają się od #, puste linie są pomijane.
+# ======================================================================
 
-# --- Kotwice ---
-ZACZNIJ_OD; CYFRA JEDEN_LUB_WIĘCEJ; ZAKOŃCZ_NA;
 
-# --- Klasy znaków ---
-CYFRA DOKŁADNIE 3;
-LITERA JEDEN_LUB_WIĘCEJ;
-SŁOWO ZERO_LUB_WIĘCEJ;
+# ──────────────────────────────────────────────────────────────────────
+# 1. KOTWICE – określają pozycję dopasowania w tekście
+# ──────────────────────────────────────────────────────────────────────
+
+# Dopasowanie musi zaczynać się na początku linii (^)
+ZACZNIJ_OD; CYFRA JEDEN_LUB_WIĘCEJ;
+
+# Dopasowanie musi kończyć się na końcu linii ($)
+LITERA JEDEN_LUB_WIĘCEJ; ZAKOŃCZ_NA;
+
+# Połączenie obu kotwic – cała linia musi pasować
+ZACZNIJ_OD; CYFRA DOKŁADNIE 3; ZAKOŃCZ_NA;
+
+# Granica słowa – dopasowanie na granicy słowa (\b)
+GRANICA_SŁOWA; TEKST "java"; GRANICA_SŁOWA;
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 2. KLASY ZNAKÓW – jakich znaków szukamy
+# ──────────────────────────────────────────────────────────────────────
+
+# Cyfra (\d) – dowolna cyfra 0–9
+CYFRA;
+
+# Litera ([a-zA-Z]) – dowolna litera łacińska
+LITERA;
+
+# Wielka litera ([A-Z])
+WIELKA_LITERA;
+
+# Mała litera ([a-z])
+MAŁA_LITERA;
+
+# Słowo (\w) – alfanumeryczne + podkreślnik
+SŁOWO;
+
+# Znak biały (\s) – spacja, tab, nowa linia
+ZNAK_BIAŁY;
+
+# Dowolny znak (.) – wszystko oprócz nowej linii
+DOWOLNY_ZNAK;
+
+# Tekst dosłowny – dokładny ciąg znaków (z automatycznym escapingiem)
 TEKST "hello world";
 
-# --- Kwantyfikatory ---
-CYFRA OPCJONALNIE;
-DOWOLNY_ZNAK JEDEN_LUB_WIĘCEJ LENIWIE;
-LITERA OD 2 DO 5;
-CYFRA MINIMUM 3;
+# Pojedynczy znak
+ZNAK "x";
 
-# --- Grupowanie ---
-GRUPA ( CYFRA DOKŁADNIE 3; TEKST "-"; ) DOKŁADNIE 2; CYFRA DOKŁADNIE 4;
 
-# --- Grupa nazwana ---
-GRUPA_NAZWANA "kod_kierunkowy" ( TEKST "+"; CYFRA OD 1 DO 3; );
+# ──────────────────────────────────────────────────────────────────────
+# 3. NEGACJE – odwrócone klasy znaków
+# ──────────────────────────────────────────────────────────────────────
 
-# --- LUB ---
-CYFRA LUB LITERA;
-
-# --- Lookahead (warunki) ---
-SŁOWO JEDEN_LUB_WIĘCEJ; JEŚLI_POTEM ( TEKST "@"; );
-
-# --- Negatywny Lookahead ---
-CYFRA JEDEN_LUB_WIĘCEJ; JEŚLI_NIE_POTEM ( TEKST "px"; );
-
-# --- Lookbehind ---
-JEŚLI_PRZED ( TEKST "$"; ); CYFRA JEDEN_LUB_WIĘCEJ;
-
-# --- Zbiory znaków ---
-DOWOLNY_Z ( "aeiou" ) JEDEN_LUB_WIĘCEJ;
-ŻADEN_Z ( ZAKRES "0" "9" ) JEDEN_LUB_WIĘCEJ;
-DOWOLNY_Z ( ZAKRES "a" "f" ZAKRES "0" "9" ) DOKŁADNIE 6;
-
-# --- Escaping w TEKST ---
-TEKST "Koszty to 5$.";
-
-# --- Predefiniowane wzorce ---
-EMAIL;
-TELEFON;
-KOD_POCZTOWY;
-ADRES_IP;
-URL;
-DATA;
-GODZINA;
-HEX;
-
-# --- Złożone wyrażenie: walidacja numeru telefonu ---
-ZACZNIJ_OD; GRUPA ( TEKST "+48"; ) OPCJONALNIE; ZNAK_BIAŁY OPCJONALNIE; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 3; ZAKOŃCZ_NA;
-
-# --- Złożone wyrażenie: prosty e-mail ---
-ZACZNIJ_OD; SŁOWO JEDEN_LUB_WIĘCEJ; TEKST "@"; SŁOWO JEDEN_LUB_WIĘCEJ; TEKST "."; LITERA OD 2 DO 4; ZAKOŃCZ_NA;
-
-# --- Negacje ---
+# Nie-cyfra (\D)
 NIE_CYFRA JEDEN_LUB_WIĘCEJ;
+
+# Nie-słowo (\W)
 NIE_SŁOWO;
+
+# Nie-znak biały (\S)
 NIE_ZNAK_BIAŁY DOKŁADNIE 5;
 
-# --- Znaki specjalne ---
+
+# ──────────────────────────────────────────────────────────────────────
+# 4. ZNAKI SPECJALNE
+# ──────────────────────────────────────────────────────────────────────
+
+# Tabulator (\t)
 TAB;
+
+# Nowa linia (\n)
 NOWA_LINIA;
-WIELKA_LITERA JEDEN_LUB_WIĘCEJ;
-MAŁA_LITERA OD 3 DO 10;
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 5. KWANTYFIKATORY – ile razy element ma wystąpić
+# ──────────────────────────────────────────────────────────────────────
+
+# Opcjonalnie (?) – zero lub jeden raz
+CYFRA OPCJONALNIE;
+
+# Jeden lub więcej (+) – minimum jedno wystąpienie
+LITERA JEDEN_LUB_WIĘCEJ;
+
+# Zero lub więcej (*) – dowolna liczba wystąpień
+SŁOWO ZERO_LUB_WIĘCEJ;
+
+# Dokładnie n razy ({n})
+CYFRA DOKŁADNIE 3;
+
+# Od n do m razy ({n,m})
+LITERA OD 2 DO 5;
+
+# Minimum n razy ({n,})
+CYFRA MINIMUM 3;
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 6. KWANTYFIKATORY LENIWE – minimalny matching
+# ──────────────────────────────────────────────────────────────────────
+
+# Leniwe dopasowanie – kwantyfikator dopasowuje jak najmniej
+DOWOLNY_ZNAK JEDEN_LUB_WIĘCEJ LENIWIE;
+DOWOLNY_ZNAK ZERO_LUB_WIĘCEJ LENIWIE;
+CYFRA OPCJONALNIE LENIWIE;
+LITERA OD 2 DO 5 LENIWIE;
+CYFRA MINIMUM 3 LENIWIE;
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 7. GRUPOWANIE – łączenie wyrażeń w grupy
+# ──────────────────────────────────────────────────────────────────────
+
+# Zwykła grupa: (...)
+GRUPA ( CYFRA DOKŁADNIE 3; TEKST "-"; ) DOKŁADNIE 2; CYFRA DOKŁADNIE 4;
+
+# Grupa z kwantyfikatorem OPCJONALNIE
+GRUPA ( TEKST "+48"; ) OPCJONALNIE;
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 8. GRUPY NAZWANE – przechwytywanie z nazwą
+# ──────────────────────────────────────────────────────────────────────
+
+# Grupa nazwana: (?<nazwa>...)
+GRUPA_NAZWANA "kod_kierunkowy" ( TEKST "+"; CYFRA OD 1 DO 3; );
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 9. ALTERNATYWA (LUB) – jedno lub drugie
+# ──────────────────────────────────────────────────────────────────────
+
+# Cyfra lub litera
+CYFRA LUB LITERA;
+
+# Wielka litera lub mała litera
+WIELKA_LITERA LUB MAŁA_LITERA;
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 10. WARUNKI – Lookahead i Lookbehind
+# ──────────────────────────────────────────────────────────────────────
+
+# Pozytywny lookahead (?=...) – sprawdza co jest POTEM
+SŁOWO JEDEN_LUB_WIĘCEJ; JEŚLI_POTEM ( TEKST "@"; );
+
+# Negatywny lookahead (?!...) – sprawdza, że POTEM NIE MA
+CYFRA JEDEN_LUB_WIĘCEJ; JEŚLI_NIE_POTEM ( TEKST "px"; );
+
+# Pozytywny lookbehind (?<=...) – sprawdza co jest PRZED
+JEŚLI_PRZED ( TEKST "$"; ); CYFRA JEDEN_LUB_WIĘCEJ;
+
+# Negatywny lookbehind (?<!...) – sprawdza, że PRZED NIE MA
+JEŚLI_NIE_PRZED ( TEKST "#"; ); CYFRA JEDEN_LUB_WIĘCEJ;
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 11. ZBIORY ZNAKÓW – własne klasy znaków
+# ──────────────────────────────────────────────────────────────────────
+
+# Dowolny z podanych znaków: [aeiou]
+DOWOLNY_Z ( "aeiou" ) JEDEN_LUB_WIĘCEJ;
+
+# Żaden z podanego zakresu: [^0-9]
+ŻADEN_Z ( ZAKRES "0" "9" ) JEDEN_LUB_WIĘCEJ;
+
+# Zakres liter i cyfr: [a-f0-9]
+DOWOLNY_Z ( ZAKRES "a" "f" ZAKRES "0" "9" ) DOKŁADNIE 6;
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 12. ESCAPING W TEKST – znaki specjalne regexa są automatycznie
+#     poprzedzane backslashem
+# ──────────────────────────────────────────────────────────────────────
+
+# Znaki .$+*?()[] zostaną automatycznie zescapowane
+TEKST "Koszty to 5$.";
+TEKST "2+2=4";
+TEKST "(sekcja)";
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 13. PREDEFINIOWANE WZORCE – gotowe do użycia
+# ──────────────────────────────────────────────────────────────────────
+
+# Adres e-mail
+EMAIL;
+
+# Numer telefonu (m.in. format PL)
+TELEFON;
+
+# Kod pocztowy (format XX-XXX)
+KOD_POCZTOWY;
+
+# Adres IPv4
+ADRES_IP;
+
+# Adres URL (http/https)
+URL;
+
+# Data (DD-MM-YYYY, DD/MM/YYYY, DD.MM.YYYY)
+DATA;
+
+# Godzina (HH:MM lub HH:MM:SS)
+GODZINA;
+
+# Kolor HEX (#FFF lub #FFFFFF)
+HEX;
+
+
+# ──────────────────────────────────────────────────────────────────────
+# 14. ZŁOŻONE PRZYKŁADY – prawdziwe przypadki użycia
+# ──────────────────────────────────────────────────────────────────────
+
+# Walidacja polskiego numeru telefonu: opcjonalny +48, 3x3 cyfry z myślnikami
+ZACZNIJ_OD; GRUPA ( TEKST "+48"; ) OPCJONALNIE; ZNAK_BIAŁY OPCJONALNIE; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 3; ZAKOŃCZ_NA;
+
+# Prosty walidator e-mail
+ZACZNIJ_OD; SŁOWO JEDEN_LUB_WIĘCEJ; TEKST "@"; SŁOWO JEDEN_LUB_WIĘCEJ; TEKST "."; LITERA OD 2 DO 4; ZAKOŃCZ_NA;
+
+# Numer telefonu w formacie (XX) XXX-XXX-XXX
+ZACZNIJ_OD; GRUPA ( CYFRA DOKŁADNIE 2; ) OPCJONALNIE; ZNAK_BIAŁY OPCJONALNIE; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 3; ZAKOŃCZ_NA;
+
+# Walidacja kodu pocztowego
+ZACZNIJ_OD; CYFRA DOKŁADNIE 2; TEKST "-"; CYFRA DOKŁADNIE 3; ZAKOŃCZ_NA;
+
+# Dopasowanie tagu HTML (np. <div>)
+TEKST "<"; LITERA JEDEN_LUB_WIĘCEJ; TEKST ">";
+
+# Wyciąganie treści w cudzysłowach
+TEKST "\""; DOWOLNY_ZNAK ZERO_LUB_WIĘCEJ LENIWIE; TEKST "\"";
+
+# Walidacja hasła: minimum 8 znaków alfanumerycznych
+ZACZNIJ_OD; SŁOWO MINIMUM 8; ZAKOŃCZ_NA;
+
+# Dopasowanie słowa "java" jako całego słowa (nie części innego)
 GRANICA_SŁOWA; TEKST "java"; GRANICA_SŁOWA;
+
+# Kolor HEX – ręczna budowa (6 znaków hex)
+TEKST "#"; DOWOLNY_Z ( ZAKRES "0" "9" ZAKRES "a" "f" ZAKRES "A" "F" ) DOKŁADNIE 6;
+
+# Numer PESEL (11 cyfr)
+ZACZNIJ_OD; CYFRA DOKŁADNIE 11; ZAKOŃCZ_NA;
+
+# Numer NIP (XXX-XXX-XX-XX lub XXXXXXXXXX)
+ZACZNIJ_OD; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 3; TEKST "-"; CYFRA DOKŁADNIE 2; TEKST "-"; CYFRA DOKŁADNIE 2; ZAKOŃCZ_NA;
+
+# Numer rejestracyjny pojazdu (np. WA 12345)
+ZACZNIJ_OD; WIELKA_LITERA OD 2 DO 3; ZNAK_BIAŁY; WIELKA_LITERA ZERO_LUB_WIĘCEJ; CYFRA OD 1 DO 5; ZAKOŃCZ_NA;

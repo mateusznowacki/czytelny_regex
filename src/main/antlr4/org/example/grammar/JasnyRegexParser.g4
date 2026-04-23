@@ -2,12 +2,12 @@ parser grammar JasnyRegexParser;
 
 options { tokenVocab = JasnyRegexLexer; }
 
-// Punkt startowy – program to sekwencja wyrażeń
+// ─── Punkt startowy – program to sekwencja wyrażeń ──────────────────
 program
     : expression+ EOF
     ;
 
-// Pojedyncze wyrażenie
+// ─── Wyrażenie – jedna instrukcja języka JasnyRegex ─────────────────
 expression
     : atom quantifier? SEMICOLON                                              # atomExpr
     | GRUPA LPAREN expression+ RPAREN quantifier? SEMICOLON                   # groupExpr
@@ -21,13 +21,13 @@ expression
     | ZADEN_Z LPAREN charSetItem+ RPAREN quantifier? SEMICOLON                # negCharSetExpr
     ;
 
-// Elementy zbioru znaków (do DOWOLNY_Z / ŻADEN_Z)
+// ─── Elementy zbioru znaków (dla DOWOLNY_Z / ŻADEN_Z) ──────────────
 charSetItem
     : STRING                        # charSetLiteral
     | ZAKRES STRING STRING          # charSetRange
     ;
 
-// Atom – podstawowa jednostka
+// ─── Atom – niepodzielna jednostka wyrażenia ────────────────────────
 atom
     : ZACZNIJ_OD        # anchorStart
     | ZAKONCZ_NA        # anchorEnd
@@ -56,7 +56,7 @@ atom
     | HEX               # hex
     ;
 
-// Kwantyfikator – modyfikator ilości (z opcjonalnym LENIWIE)
+// ─── Kwantyfikator – modyfikator ilości (z opcjonalnym trybem LENIWIE) ─
 quantifier
     : OPCJONALNIE LENIWIE?              # optional
     | JEDEN_LUB_WIECEJ LENIWIE?         # oneOrMore

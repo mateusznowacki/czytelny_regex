@@ -43,6 +43,7 @@
                 <configuration>
                     <visitor>true</visitor>
                     <listener>false</listener>
+                    <encoding>UTF-8</encoding>
                 </configuration>
                 <executions>
                     <execution>
